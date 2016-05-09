@@ -1,0 +1,309 @@
+-- phpMyAdmin SQL Dump
+-- version 4.5.3.1
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Feb 20, 2016 at 08:11 PM
+-- Server version: 5.7.10
+-- PHP Version: 5.6.17
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `company`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `aluboat`
+--
+
+CREATE TABLE `aluboat` (
+  `idwd` int(11) NOT NULL,
+  `numbal` int(11) NOT NULL,
+  `heial` double NOT NULL,
+  `weial` double NOT NULL,
+  `lenal` double NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fibboat`
+--
+
+CREATE TABLE `fibboat` (
+  `idfb` int(11) NOT NULL,
+  `nbfb` int(11) NOT NULL,
+  `heifb` double NOT NULL,
+  `weifb` double NOT NULL,
+  `lenfb` double NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fishingses`
+--
+
+CREATE TABLE `fishingses` (
+  `idfis` int(11) NOT NULL,
+  `season` varchar(5) NOT NULL,
+  `maincatch` varchar(30) NOT NULL,
+  `price` double NOT NULL,
+  `usedeng` varchar(20) NOT NULL,
+  `impl` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `members`
+--
+
+CREATE TABLE `members` (
+  `idmem` int(11) NOT NULL,
+  `namemem` varchar(30) NOT NULL,
+  `phonemem` int(8) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `otherengine`
+--
+
+CREATE TABLE `otherengine` (
+  `ideng` int(11) NOT NULL,
+  `hpeng` int(11) NOT NULL,
+  `qteeng` int(11) NOT NULL,
+  `priceeng` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tohatsu`
+--
+
+CREATE TABLE `tohatsu` (
+  `idto` int(11) NOT NULL,
+  `hptu` double NOT NULL,
+  `qtetu` double NOT NULL,
+  `pricetu` double NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(50) NOT NULL,
+  `prenom` varchar(50) NOT NULL,
+  `login` varchar(255) NOT NULL,
+  `motdepasse` varchar(255) NOT NULL,
+  `statut` varchar(50) NOT NULL,
+  `fonction` varchar(50) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `login` (`login`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
+
+
+-- Table structure for table `visitor`
+--
+
+CREATE TABLE `visitor` (
+  `idvis` int(11) NOT NULL ,
+  `name` varchar(30) NOT NULL,
+  `occupation` varchar(30) NOT NULL,
+  `tel` int(8) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `site` varchar(50) NOT NULL,
+  `area` varchar(50) NOT NULL,
+  `datevis` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `woodboat`
+--
+
+CREATE TABLE `woodboat` (
+  `idw` int(11) NOT NULL,
+  `numb` int(11) NOT NULL,
+  `hei` double NOT NULL,
+  `wei` double NOT NULL,
+  `len` double NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `workshop`
+--
+
+CREATE TABLE `workshop` (
+  `idwrk` int(11) NOT NULL,
+  `numwork` int(11) NOT NULL,
+  `idmem` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `yamaha`
+--
+
+CREATE TABLE `yamaha` (
+  `idyam` int(11) NOT NULL,
+  `hpyam` double NOT NULL,
+  `qteyam` double NOT NULL,
+  `priceyam` double NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `aluboat`
+--
+ALTER TABLE `aluboat`
+  ADD PRIMARY KEY (`idwd`);
+
+--
+-- Indexes for table `fibboat`
+--
+ALTER TABLE `fibboat`
+  ADD PRIMARY KEY (`idfb`);
+
+--
+-- Indexes for table `fishingses`
+--
+ALTER TABLE `fishingses`
+  ADD PRIMARY KEY (`idfis`);
+
+--
+-- Indexes for table `members`
+--
+ALTER TABLE `members`
+  ADD PRIMARY KEY (`idmem`);
+
+--
+-- Indexes for table `otherengine`
+--
+ALTER TABLE `otherengine`
+  ADD PRIMARY KEY (`ideng`);
+
+--
+-- Indexes for table `tohatsu`
+--
+ALTER TABLE `tohatsu`
+  ADD PRIMARY KEY (`idto`);
+
+--
+-- Indexes for table `user`
+--
+
+
+--
+-- Indexes for table `visitor`
+--
+ALTER TABLE `visitor`
+  ADD PRIMARY KEY (`idvis`);
+
+--
+-- Indexes for table `woodboat`
+--
+ALTER TABLE `woodboat`
+  ADD PRIMARY KEY (`idw`);
+
+--
+-- Indexes for table `workshop`
+--
+ALTER TABLE `workshop`
+  ADD PRIMARY KEY (`idwrk`),
+  ADD KEY `idmem` (`idmem`);
+
+--
+-- Indexes for table `yamaha`
+--
+ALTER TABLE `yamaha`
+  ADD PRIMARY KEY (`idyam`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `aluboat`
+--
+ALTER TABLE `aluboat`
+  MODIFY `idwd` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `fibboat`
+--
+ALTER TABLE `fibboat`
+  MODIFY `idfb` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `fishingses`
+--
+ALTER TABLE `fishingses`
+  MODIFY `idfis` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `members`
+--
+ALTER TABLE `members`
+  MODIFY `idmem` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `otherengine`
+--
+ALTER TABLE `otherengine`
+  MODIFY `ideng` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tohatsu`
+--
+ALTER TABLE `tohatsu`
+  MODIFY `idto` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `idus` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `visitor`
+--
+ALTER TABLE `visitor`
+  MODIFY `idvis` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `woodboat`
+--
+ALTER TABLE `woodboat`
+  MODIFY `idw` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `workshop`
+--
+ALTER TABLE `workshop`
+  MODIFY `idwrk` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `yamaha`
+--
+ALTER TABLE `yamaha`
+  MODIFY `idyam` int(11) NOT NULL AUTO_INCREMENT;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
